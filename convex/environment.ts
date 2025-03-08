@@ -1,5 +1,4 @@
 // Environment utility functions
-import dotenv from "dotenv";
 
 // Constants
 export interface EnvironmentVariables {

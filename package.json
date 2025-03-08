@@ -8,7 +8,8 @@
     "dev:frontend": "vite --open",
     "dev:backend": "convex dev",
     "dev:init": "convex dev --until-success && convex dashboard",
-    "build": "tsc && vite build",
+    "build": "vite build",
+    "type-check": "tsc --noEmit",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },

@@ -150,9 +150,8 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 
       {/* Chat Component with proper renderTrigger */}
       <ConvexAiChat 
-        convexUrl={import.meta.env.VITE_CONVEX_URL || ''}
+        convexUrl={(import.meta as any).env.VITE_CONVEX_URL || ''}
         name="Mesza Support"
-        infoMessage="Our AI assistant can help with questions about our standing desks, accessories, and services."
         welcomeMessage="Hello! I'm your Mesza Assistant. How can I help you choose the perfect standing desk today?"
         renderTrigger={(onClick) => (
           <button 

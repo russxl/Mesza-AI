@@ -1,6 +1,6 @@
 /* eslint-disable no-constant-condition */
 import { OpenAI } from "openai";
-import { map, sleep } from "modern-async";
+import { sleep } from "modern-async";
 import { v } from "convex/values";
 import { internal } from "./_generated/api";
 import {
@@ -14,8 +14,8 @@ import {
 } from "./_generated/server";
 
 // Constants for streaming configuration
-const STREAM_CHUNK_SIZE = 5; // Send updates after smaller chunks for more responsive streaming
-const STREAM_DELAY_MS = 0; // Reduce delay between chunk updates to make streaming appear more responsive
+// Reduce delay between chunk updates to make streaming appear more responsive
+const STREAM_DELAY_MS = 0; 
 
 // Get environment variables from process.env directly
 function getEnvironmentVariables() {
@@ -227,7 +227,7 @@ export const answerStreaming = internalAction({
       console.log("Thread ID for streaming:", threadId);
       
       // Add user message to thread - but don't create duplicate in our db
-      const message = await openai.beta.threads.messages.create(threadId, {
+      await openai.beta.threads.messages.create(threadId, {
         role: "user",
         content: text,
       });
@@ -242,7 +242,6 @@ export const answerStreaming = internalAction({
       
       // Start streaming response back to client
       let accumulatedMessage = "";
-      let isFirstChunk = true;
       
       // Process the stream
       for await (const chunk of run) {

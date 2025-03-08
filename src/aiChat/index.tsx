@@ -23,14 +23,12 @@ import { Button } from "@/components/ui/button.js";
 
 export function ConvexAiChat({
   convexUrl,
-  infoMessage,
   name,
   welcomeMessage,
   renderTrigger,
   onHideChat,
 }: {
   convexUrl: string;
-  infoMessage: ReactNode;
   name: string;
   welcomeMessage: string;
   renderTrigger: (onClick: () => void) => ReactNode;
